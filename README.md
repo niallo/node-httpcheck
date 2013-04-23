@@ -73,7 +73,7 @@ function(opts, cb)
 
 ## Tests
 
-`httpcheck` (has tests)[https://github.com/niallo/node-httpcheck/blob/master/test/test.js]. Execute `npm test` to run them.
+`httpcheck` [has tests](https://github.com/niallo/node-httpcheck/blob/master/test/test.js). Execute `npm test` to run them.
 
 ## License
 
