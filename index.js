@@ -12,6 +12,7 @@ var HTTP_CHECK_INTERVAL = 1000
 //  - check: Function to validate response object (default `response is truthy`)
 //  - checkTries: Number of tries before failing the test (default 10)
 //  - checkInverval: Interval between checks in milliseconds (default 1000)
+//  - log: Custom log function, defaults to console.log
 //
 module.exports = function(opts, cb) {
   var checkTries = opts.checkTries
@@ -31,7 +32,6 @@ module.exports = function(opts, cb) {
   var log = opts.log || console.log
   var tries = 0
   var intervalId = setInterval(function() {
-    // Check for http status 200 on http://localhost:HTTP_PORT/
     request(opts.url, function(err, response) {
       tries++
       if (!err && statusCheck(response)) {
