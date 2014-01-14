@@ -31,12 +31,11 @@ module.exports = function(opts, cb) {
   }
   var log = opts.log || console.log
   var tries = 0
-  var intervalId = setInterval(function() {
+  var check = function() {
     request(opts.url, function(err, response) {
       tries++
       if (!err && statusCheck(response)) {
         log("Got HTTP GET on " + opts.url + " indicating server is up")
-        clearInterval(intervalId)
         return cb(null)
       } else {
         log("Error on " + opts.url + ": " + err)
@@ -44,11 +43,14 @@ module.exports = function(opts, cb) {
           var msg = ("HTTP GET check on " + opts.url + " failed after " + tries
             + " tries, server not up - failing test")
           log(msg)
-          clearInterval(intervalId)
           return cb(msg, null)
         }
       }
+      waitCheck()
     })
-  }, checkInterval)
-  return intervalId
+  }
+  var waitCheck = function() {
+    return setTimeout(check, checkInterval)
+  }
+  return waitCheck()
 }
