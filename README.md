@@ -65,6 +65,7 @@ function(opts, cb)
 - `url`: URL to run HTTP check against. Required.
 - `checkTries`: Number of times to try the HTTP check. Default is 10.
 - `checkInterval`: Interval between HTTP check tries in ms. Default is 1000ms (1 second)
+- `checkTimeout`: Timeout for the HTTP check in ms. Default is 30000ms (30 seconds)
 - `check`: Custom check function which accepts a HTTP response object and returns
 `true` or `false` on success or failure. Default is that response object is truthy.
 - `log`: Custom log function. Default is `console.log`.

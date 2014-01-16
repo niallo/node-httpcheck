@@ -6,6 +6,9 @@ var HTTP_CHECK_TRIES = 10
 // Default interval in between HTTP checks in ms
 var HTTP_CHECK_INTERVAL = 1000
 
+// Default time to wait before timeout
+var HTTP_CHECK_TIMEOUT = 30000
+
 //
 // **opts** an object with options
 //  - url: URL to check
@@ -23,6 +26,10 @@ module.exports = function(opts, cb) {
   if (opts.checkInterval === undefined) {
     checkInterval = HTTP_CHECK_INTERVAL
   }
+  var checkTimeout = opts.checkTimeout
+  if (opts.checkTimeout === undefined) {
+    checkTimeout = HTTP_CHECK_TIMEOUT
+  }
   var statusCheck = opts.check || function(response) {
     return response ? true : false
   }
@@ -32,7 +39,7 @@ module.exports = function(opts, cb) {
   var log = opts.log || console.log
   var tries = 0
   var check = function() {
-    request(opts.url, function(err, response) {
+    request(opts.url, {timeout:checkTimeout}, function(err, response) {
       tries++
       if (!err && statusCheck(response)) {
         log("Got HTTP GET on " + opts.url + " indicating server is up")
