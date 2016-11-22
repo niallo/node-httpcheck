@@ -17,10 +17,10 @@
   "author": "Niall O'Higgins <niallo@frozenridge.co>",
   "license": "BSD",
   "dependencies": {
-    "request": "~2.16.6"
+    "request": "^2.79.0"
   },
   "devDependencies": {
-    "chai": "~1.5.0",
-    "mocha": "~1.9.0"
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2"
   }
 }
