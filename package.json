@@ -1,6 +1,6 @@
 {
   "name": "httpcheck",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Simple HTTP status checker w/ timeout",
   "main": "index.js",
   "scripts": {
