@@ -13,7 +13,7 @@ describe('httpcheck', function() {
   it('should fail with invalid server', function(done) {
     var gotLog = false
     var opts = {
-      url:"http://localhost:78912/foo",
+      url:"http://localhost:65530/foo",
       checkTries:1,
       // silence logs
       log: function(msg) {
@@ -28,7 +28,7 @@ describe('httpcheck', function() {
   })
 
   describe('#integration test', function(done) {
-    var port = 76515
+    var port = 60000
     // Simple test server
     var server = http.createServer(function(req, res) {
 
